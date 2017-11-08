@@ -1,8 +1,17 @@
-$navbar-default-bg: #631b48;
+$navbar-default-bg: #38163d;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.center{
+  text-align: center;
+  color: #fff;
+}
+
+.jumbotron{
+  background-image: asset-url('cover_image.png');
+  background-size: cover;
+  }
 
 #logo {
   float: left;
@@ -14,6 +23,30 @@ $navbar-default-bg: #631b48;
 }
 
 #logo:hover {
-  color: #f442b3;
-  text-decoration: none;
+  color: #707fef;
+  text-decoration: underline;
+}
+
+.btn-xlg {
+  background-color: #38163d;
+  border-color: #fff;
+  color: #fff
+}
+
+.btn-xlg:hover {
+  background-color: #707fef;
+  border-width: medium ;
+  border-color: #38163d;
+  color: #38163d;
+  font-weight: bold;
+}
+
+.footer{
+  color: #707fef;
+  margin-top: 40px;
+}
+
+.footer:hover{
+  color: #38163d;
+  font-weight: bold;
 }
