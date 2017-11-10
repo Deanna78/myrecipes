@@ -41,6 +41,18 @@ $navbar-default-bg: #38163d;
   font-weight: bold;
 }
 
+.col-lg-4 {
+  width: 33.33333333%;
+  text-align: center;
+}
+
+.teaser-image{
+  height: 140px;
+  width: auto;
+  border-radius: 25%;
+  align-content: center;
+}
+
 .footer{
   height: 50px;
   background-color: #38163d;
