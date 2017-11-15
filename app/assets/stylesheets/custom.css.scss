@@ -1,4 +1,4 @@
-$navbar-default-bg: #38163d;
+$navbar-default-bg: #4d004d;
 
 
 @import "bootstrap-sprockets";
@@ -28,7 +28,7 @@ $navbar-default-bg: #38163d;
 }
 
 .btn-xlg {
-  background-color: #38163d;
+  background-color: #4d004d;
   border-color: #fff;
   color: #fff
 }
@@ -36,8 +36,8 @@ $navbar-default-bg: #38163d;
 .btn-xlg:hover {
   background-color: #707fef;
   border-width: medium ;
-  border-color: #38163d;
-  color: #38163d;
+  border-color: #4d004d;
+  color: #4d004d;
   font-weight: bold;
 }
 
@@ -55,8 +55,20 @@ $navbar-default-bg: #38163d;
 
 .footer{
   height: 50px;
-  background-color: #38163d;
+  background-color: #4d004d;
   padding-top: 10px;
   color: #fff;
   margin-top: 80px;
+}
+
+.C-C1{
+  color: #4d004d
+}
+
+.C-C2{
+  color: #707fef
+}
+
+.C-C3:hover{
+  color: #707fef
 }

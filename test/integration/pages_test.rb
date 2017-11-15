@@ -13,7 +13,3 @@ class PagesTest < ActionDispatch::IntegrationTest
   end
 
 end
-
-# test "the truth" do
-#   assert true
-# end
