@@ -47,10 +47,21 @@ $navbar-default-bg: #4d004d;
 }
 
 .teaser-image{
-  height: 140px;
-  width: auto;
+  height: auto;
+  width: 140px;
   border-radius: 25%;
   align-content: center;
+}
+
+.recipe-photo{
+  height: 130px;
+  width: 130px;
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 40%;
+  align-content: center;
+  color: #fff;
+  background-color: #4d004d;
 }
 
 .footer{
@@ -67,6 +78,10 @@ $navbar-default-bg: #4d004d;
 
 .C-C2{
   color: #707fef
+}
+
+.white a{
+  color: #fff
 }
 
 .well a{

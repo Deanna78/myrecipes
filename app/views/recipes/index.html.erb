@@ -4,19 +4,26 @@
   <div class="row">
     <div class="col-md-2">
       <section class="chef_info center">
-        <%= gravatar_for(recipe.chef, size: 120) %>
+        <%= gravatar_for(recipe.chef, size: 110) %>
       </section>
     </div>
 
     <div class="col-md-8 well">
       <h4 class="C-C1"><%= link_to recipe.name, recipe_path(recipe) %></h4>
-      <p><%= truncate(recipe.description, length: 150) %></p>
+      <p><%= truncate(recipe.description, length: 80) %></p>
       <p>
         <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago</small></span>
       </p>
     </div>
-    <div class="col-md-2 well">
-        <h4><%= "Recipe image goes here" %></h4>
+
+    <div class= "well col-md-2 recipe-photo  ">
+      <em><h4><%= "Add your recipe's picture here" %></h4></em>
     </div>
+
   </div>
 <% end %>
+
+<div class="well col-md-8 col-md-offset-2 center ">
+  <strong><%= link_to "Create New Recipe", new_recipe_path, class: 'btn  btn-info white' %></strong>
+  <!-- <strong><%= link_to "Back to Home Page", 'pages/home', class: 'btn  btn-info white' %></strong> -->
+</div>

@@ -1,6 +1,6 @@
 <div class= "jumbotron center">
-  <h1> Charlie's Angels Recipes </h1>
-  <h2> A fun place to share and collect food ideas!</h2>
+  <h1> Who's Hungry? </h1>
+  <h2> A great place to share and collect food ideas!</h2>
   <p><%= link_to "Sign up or Log in", "#", class: "btn btn-danger  btn-lg  btn-xlg" %></p>
 </div>
 
@@ -11,7 +11,9 @@
    <%= image_tag "aperitif.png", class: "teaser-image"  %>
    <p><h2>Aperitifs</h2></p>
    <p>Cocktails and Nibbles</p>
-   <p><a class="btn btn-lg btn-xlg" href="#" role="button">Get ideas &raquo;</a></p>
+   <div class="btn btn-lg btn-xlg white">
+     <%= link_to "Get Ideas or Add New Ones", recipes_path %>
+   </div>
  </div><!-- /.col-lg-4 -->
  <div class="col-lg-4 ">
    <%= image_tag "mains.png", class: "teaser-image" %>
