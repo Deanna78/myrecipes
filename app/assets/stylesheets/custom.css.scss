@@ -47,20 +47,23 @@ $navbar-default-bg: #4d004d;
 }
 
 .teaser-image{
-  height: auto;
+  height: 140px;
   width: 140px;
   border-radius: 25%;
   align-content: center;
 }
 
 .recipe-photo{
-  height: 130px;
-  width: 130px;
+  height: 140px;
+  width: 150px;
   margin-top: 5px;
   margin-left: 5px;
   border-radius: 40%;
   align-content: center;
   color: #fff;
+  text-decoration-color: #afeeee;
+  text-align: center;
+  padding-top: 25px;
   background-color: #4d004d;
 }
 

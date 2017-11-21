@@ -1,29 +1,37 @@
 <%= render 'shared/page_title',  title: @recipe.name  %>
 
-<div class="well col-md-8 col-md-offset-2">
-  <h3 class="pull-left C-C1"><strong>Method: </strong></h3></br></br>
-  <hr />
-  <p><%= simple_format(@recipe.description) %></p>
-  <hr />
+<div class = "row col-md-12">
+  <div class="well col-md-8 col-md-offset-2">
+    <h3 class="pull-left C-C1"><strong>Method: </strong></h3></br></br>
+    <hr />
+    <p><%= simple_format(@recipe.description) %></p>
+    <hr />
 
-  <div class="pull-left">
-    <p>
-      <h4><em> Created by: </em></h4>
-    </p>
-    <p>
-      <%= @recipe.chef.chefname.capitalize %>
-    </p>
+    <div class="pull-left">
+      <p>
+        <h4><em> Created by: </em></h4>
+      </p>
+      <p>
+        <%= @recipe.chef.chefname.capitalize %>
+      </p>
+    </div>
+
+    <div class="pull-right">
+      <p>
+        <%= link_to gravatar_for(@recipe.chef), recipes_path %>
+      </p>
+      <%= time_ago_in_words(@recipe.created_at) %> ago
+    </div>
   </div>
 
-  <div class="pull-right">
-    <p>
-      <%= link_to gravatar_for(@recipe.chef), recipes_path %>
-    </p>
-    <%= time_ago_in_words(@recipe.created_at) %> ago
+  <div class= "recipe-photo col-md-2 offset-md-10  " >
+    <%=  "Recipe image goes here" %>
   </div>
+
+
 </div>
 
-<div class="well col-md-8 col-md-offset-2 center ">
+<div class="well col-md-6 col-md-offset-3 center ">
   <%= link_to "Back to Listing", recipes_path, class: 'btn  btn-info white'  %>
   <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-warning' %>
   <%= link_to "Delete Recipe", recipe_path(@recipe), method: :delete, data: {confirm: "Are you sure you want to delete this recipe?"},
