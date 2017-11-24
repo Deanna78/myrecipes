@@ -7,7 +7,7 @@ end
 def create
   @chef = Chef.new(chef_params)
   if @chef.save
-    flash[:success] = "Welcome #{@chef.chefname.capitalize}, have fun on the App!"
+    flash[:success] = "Welcome #{@chef.chefname}, have fun on the App!"
     redirect_to chef_path(@chef)
   else
 render 'new'
@@ -15,7 +15,7 @@ render 'new'
 end
 
 def show
-
+  @chef = Chef.find(params[:id])
 end
 
 def index

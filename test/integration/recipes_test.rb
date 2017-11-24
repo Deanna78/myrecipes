@@ -5,7 +5,7 @@ class RecipesTest < ActionDispatch::IntegrationTest
 def setup
   @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                       password: "password", password_confirmation: "password")
-  @recipe = @chef.recipes.create(name: "soup", description: "cook meat and veg")
+  @recipe = Recipe.create(name: "soup", description: "cook meat and veg", chef: @chef)
   @recipe2 = @chef.recipes.build(name: "pork ribs", description: "marinade ribs and then fry")
   @recipe2.save
   @recipe3 = @chef.recipes.create(name: "fish soup", description: "boil fish with veg stock")
@@ -34,7 +34,7 @@ end
 test "should get recipes show" do
   get recipe_path(@recipe)
   assert_template 'recipes/show'
-  # assert_match @recipe.name, response.body
+  #assert_match @recipe.name, response.body
   assert_match @recipe.description, response.body
   assert_match @chef.chefname, response.body
   assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit Recipe"

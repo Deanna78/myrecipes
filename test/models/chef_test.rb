@@ -21,6 +21,11 @@ class ChefTest < ActiveSupport::TestCase
     assert_not @chef.valid?
   end
 
+  test "name should begin with a capital" do
+    @chef.chefname = "aaa".titleize
+    assert @chef.valid?
+  end
+
   test "email should be present" do
     @chef.email = " "
     assert_not @chef.valid?

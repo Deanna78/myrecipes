@@ -3,7 +3,7 @@ require 'test_helper'
 class ChefsSignupTest < ActionDispatch::IntegrationTest
 
 def setup
-  @chef = Chef.create!(chefname: "deanna", email: "deanna@example.com",
+  @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                       password: "password", password_confirmation: "password")
 end
 
@@ -24,15 +24,15 @@ test "reject invalid signup" do
 end
 
 test "accept valid signup" do
-    get signup_path
-    assert_difference "Chef.count", 1 do
-      post chefs_path, params: { chef: { chefname: "mashrur", email: "mashrur@example.com",
-                                  password: "password", password_confirmation: "password" } }
-    end
-    follow_redirect!
-    assert_template "chefs/show"
-    assert_not flash.empty?
+  get signup_path
+  assert_difference "Chef.count", 1 do
+    post chefs_path, params: { chef: { chefname: "Al", email: "al@example.com",
+                                password: "password", password_confirmation: "password" } }
   end
+  follow_redirect!
+  assert_template 'chefs/show'
+  assert_not flash.empty?
+end
 
 
 end
