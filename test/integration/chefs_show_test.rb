@@ -3,18 +3,20 @@ require 'test_helper'
 class ChefsShowTest < ActionDispatch::IntegrationTest
 
   def setup
-     @chef = Chef.create!(chefname: "deanna", email: "deanna@example.com",
-                         password: "password", password_confirmation: "password")
-     @recipe = Recipe.create(name: "vegetable saute",description: "great vegetable sautee,
-                        add vegetable and oil", chef: @chef)
-     @recipe2 = @chef.recipes.build(name: "chicken saute", description: "great chicken dish")
-     @recipe2.save
+    @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
+                      password: "password", password_confirmation: "password")
+    @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef)
+    @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry")
+    @recipe2.save
+    @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock")
 
-     #@recipe = @chef.recipes.create(name: "soup", description: "cook meat and veg")
-     #@recipe2 = @chef.recipes.build(name: "pork ribs", description: "marinade ribs and then fry")
-     #@recipe2.save
-     #@recipe3 = @chef.recipes.create(name: "fish soup", description: "boil fish with veg stock")
 
+    # @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",
+    #                     password: "password", password_confirmation: "password")
+    # @recipe = Recipe.create(name: "vegetable saute", description: "great vegetable sautee", chef: @chef)
+    # @recipe2 = @chef.recipes.build(name: "chicken saute",
+    #                       description: "great chicken dish")
+    # @recipe2.save
 
   end
 

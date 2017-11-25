@@ -7,7 +7,7 @@
     </div>
 
     <div class="col-md-8 well">
-      <h4 class="C-C1"><%= link_to recipe.name, recipe_path(recipe) %></h4>
+      <h4 class="C-C1"><%= link_to recipe.name.titleize, recipe_path(recipe) %></h4>
       <p><%= truncate(recipe.description, length: 80) %></p>
       <p>
         <span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago</small></span>
