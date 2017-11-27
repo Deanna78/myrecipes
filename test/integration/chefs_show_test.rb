@@ -5,10 +5,10 @@ class ChefsShowTest < ActionDispatch::IntegrationTest
   def setup
     @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                       password: "password", password_confirmation: "password")
-    @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef)
-    @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry")
+    @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef, group: "Mains")
+    @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry", group: "Mains")
     @recipe2.save
-    @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock")
+    @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock", group: "Mains")
 
 
     # @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",

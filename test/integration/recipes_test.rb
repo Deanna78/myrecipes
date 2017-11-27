@@ -5,10 +5,10 @@ class RecipesTest < ActionDispatch::IntegrationTest
 def setup
   @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                     password: "password", password_confirmation: "password")
-  @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef)
-  @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry")
+  @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef, group: "Mains")
+  @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry", group: "Mains")
   @recipe2.save
-  @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock")
+  @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock", group: "Mains")
 
 
 #  @chef = Chef.create!(chefname: "mashrur", email: "mashrur@example.com",
@@ -46,6 +46,7 @@ end
     #assert_match @recipe.name, response.body
     assert_match @recipe.description, response.body
     assert_match @chef.chefname, response.body
+    assert_match @recipe.group, response.body
     assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit Recipe"
     assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete Recipe"
   end
@@ -55,8 +56,9 @@ end
     assert_template 'recipes/new'
     name_of_recipe = "potjie"
     description_of_recipe = "brown meat, add veggies, cook slowly over coals, add beer or wine as needed"
+    group_of_recipe = "Mains"
     assert_difference 'Recipe.count', 1 do
-      post recipes_path, params: { recipe: {name: name_of_recipe, description: description_of_recipe }}
+      post recipes_path, params: { recipe: {name: name_of_recipe, description: description_of_recipe, group: group_of_recipe }}
     end
     follow_redirect!
     assert_match name_of_recipe.capitalize, response.body
@@ -68,7 +70,7 @@ end
     get new_recipe_path
     assert_template 'recipes/new'
     assert_no_difference 'Recipe.count' do
-      post recipes_path, params: {recipe: {name: " ", description: " "} }
+      post recipes_path, params: {recipe: {name: " ", description: " ", group: " "} }
     end
     assert_template 'recipes/new'
     assert_select 'h2.panel-title'
