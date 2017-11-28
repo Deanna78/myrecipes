@@ -3,7 +3,12 @@ class RecipesController < ApplicationController
 
 
   def index
-    @recipes = Recipe.all
+
+    @recipe = Recipe.where(group: 'Mains').order(created_at: :desc)
+    # else
+    #   @recipes = Recipe.all
+    # end
+
   end
 
   def show
@@ -55,7 +60,13 @@ private
     params.require(:recipe).permit(:name, :description, :group)
   end
 
-
-
+  def self.group
+    Recipe.where()
+    # if @recipe.group = "Mains"
+    #   @recipe = Recipe.where(group: "Mains")
+    # elsif @recipe.group = "Dessert"
+    #   @recipe = Recipe.where(group: "Dessert")
+    # end
+  end
 
 end
