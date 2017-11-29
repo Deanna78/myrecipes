@@ -1,0 +1,30 @@
+<%= render 'shared/page_title', title: "listing all chefs" %>
+
+<div align = 'center'> <%= will_paginate %> </div>
+
+<% @chefs.each do |chef| %>
+  <div class="row ">
+    <div class=" col-md-offset-2 center ">
+      <div class=" col-md-2  ">
+        <section class="chef_info center">
+          <%= link_to gravatar_for(chef, size: 80), chef_path(chef) %>
+        </section>
+      </div>
+
+      <div class="col-md-6  well">
+        <h4 class="C-C1"><%= link_to chef.chefname.titleize, chef_path(chef) %></h4>
+      <h6 class="C-C1"><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %></h6>
+        <p>
+          <span class="quiet C-C1 pull-right"><small>Chef created <%= time_ago_in_words(chef.created_at) %> ago</small></span>
+        </p>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div align = 'center'> <%= will_paginate %> </div>
+
+<div class=" center ">
+  <!-- <strong><%= link_to "Create New Recipe", new_recipe_path, class: 'btn  btn-info white' %></strong> -->
+<strong><%= link_to "Back to Home Page", 'pages/home', class: 'btn  btn-info white' %></strong>
+</div>
