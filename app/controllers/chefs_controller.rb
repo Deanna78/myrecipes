@@ -35,6 +35,13 @@ def update
   else
     render 'edit'
   end
+
+  def destroy
+    @chef = Chef.find(params[:id]).destroy
+    flash[:success] = "Chef and all associated recipes have been deleted"
+    redirect_to chefs_path
+  end
+
 end
 
 
