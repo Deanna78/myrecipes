@@ -6,6 +6,7 @@ def setup
   @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                     password: "password", password_confirmation: "password")
   @recipe = Recipe.create(name: "Soup", description: "cook meat and veg", chef: @chef)
+  @recipe1 = Recipe.create(name: "Stew", description: "slow cook meat and veg for 4 hours", chef: @chef)
   @recipe2 = @chef.recipes.build(name: "Pork Ribs", description: "marinade ribs and then fry")
   @recipe2.save
   @recipe3 = @chef.recipes.create(name: "Fish Soup", description: "boil fish with veg stock")
@@ -41,6 +42,7 @@ end
   end
 
   test "should get recipes show" do
+    sign_in_as(@chef, "password")
     get recipe_path(@recipe)
     assert_template 'recipes/show'
     #assert_match @recipe.name, response.body
@@ -51,6 +53,7 @@ end
   end
 
   test "create new valid recipe" do
+    sign_in_as(@chef, "password")
     get new_recipe_path
     assert_template 'recipes/new'
     name_of_recipe = "potjie"

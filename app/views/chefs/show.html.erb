@@ -15,11 +15,11 @@
 <%= render 'recipes/recipe', obj: @chef_recipes %>
 
 <div align = 'center'>
-  <%= will_paginate @chef_recipes %> 
+  <%= will_paginate @chef_recipes %>
 </div>
 
 <div class="well col-md-6 col-md-offset-3 center ">
-  <%= link_to "All Chefs", chefs_path, class: 'btn  btn-info white'  %>
-  <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-warning' %>
+  <%= link_to "See All Chefs", chefs_path, class: 'btn  btn-info white'  %>
+  <!-- <%= link_to "Edit Recipe", edit_recipe_path, class: 'btn btn-warning' %> -->
 
 </div>

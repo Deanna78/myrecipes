@@ -8,13 +8,19 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "MyRecipes", root_path, class: "navbar-brand", id: "logo" %>
+      <% if logged_in? %>
+        <%= link_to "MyRecipes", chef_path(current_chef), class: "navbar-brand", id: "logo" %>
+      <% else %>
+        <%= link_to "MyRecipes", root_path, class: "navbar-brand", id: "logo" %>
+      <% end %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a id="logo2" href= "/recipes/new" > Create Recipe</a> <span class="sr-only">(current)</span></li>
+        <% if logged_in? %>
+          <li class="active"><a id="logo2" href= "/recipes/new" > Create Recipe</a> <span class="sr-only">(current)</span></li>
+        <% end %>
         <li><a id="logo3" href= "/recipes" > All Recipes </a></li>
         <li class="dropdown">
           <a href="#" id="logo3" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> Making life easy <span class="caret"></span></a>
@@ -37,17 +43,22 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a id="logo3" href= "/chefs" > All Chefs </a></li>
-        <li id="logo3" class="active"><a id="logo2" href= '/signup' >Signup Here</a><span class="sr-only">(current)</span></li>
-        <li class="dropdown">
-          <a href="#" id="logo3" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-        </li>
+        <% if logged_in? %>
+          <li class="dropdown active">
+            <a href="#" id="logo2" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_chef.chefname %>'s Profile <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <!-- <li><a href= " /chefs/:id " >View Your Profile</a></li> -->
+              <li><%= link_to "View Your Profile", chef_path(current_chef) %></li>
+              <li><%= link_to "Edit Your Profile", edit_chef_path(current_chef) %></li>
+              <li><a href="#">Something else here</a></li>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "Log out" , logout_path, method: :delete %></li>
+            </ul>
+          </li>
+          <% else %>
+          <li  class="active"><a id="logo2" href= '/login' >Log In</a><span class="sr-only">(current)</span></li>
+            <!-- <li><%= link_to "Log In", login_path %></li> -->
+          <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

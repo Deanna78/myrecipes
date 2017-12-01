@@ -6,6 +6,7 @@ def setup
   @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                       password: "password", password_confirmation: "password")
   @recipe = @chef.recipes.create(name: "soup", description: "cook meat and veg")
+  @recipe1 = @chef.recipes.create(name: "stew", description: "slow cook meat and veg for 4 hours")
 end
 
 test "reject invalid recipe update" do
@@ -32,6 +33,7 @@ test "successfully update a recipe" do
 end
 
 test "successfully delete a recipe" do
+  sign_in_as(@chef, "password")
   get recipe_path(@recipe)
   assert_template 'recipes/show'
   assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete Recipe"
