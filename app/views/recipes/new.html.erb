@@ -1,3 +1,9 @@
 <%= render 'shared/page_title', title: "create a new recipe" %>
 
-<%= render 'form' %>
+<% if logged_in? %>
+  <%= render 'form' %>
+<% else %>
+  <h4 class= "C-C2 center"><%= "Don't forget you must be logged in to create a new recipe." %></h4>
+  <!-- <%= link_to "Log in here" , login_path  %> -->
+
+<% end %>
