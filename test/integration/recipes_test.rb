@@ -45,7 +45,7 @@ end
     sign_in_as(@chef, "password")
     get recipe_path(@recipe)
     assert_template 'recipes/show'
-    #assert_match @recipe.name, response.body
+    assert_match @recipe.name, response.body
     assert_match @recipe.description, response.body
     assert_match @chef.chefname, response.body
     assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit Recipe"
@@ -68,6 +68,7 @@ end
 
 
   test "reject invalid recipe submission" do
+    sign_in_as(@chef, "password")
     get new_recipe_path
     assert_template 'recipes/new'
     assert_no_difference 'Recipe.count' do

@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_chef
     @current_chef ||= Chef.find(session[:chef_id]) if session[:chef_id]
+    # @current_chef ||= Chef.find(1)
   end
 
   def logged_in?

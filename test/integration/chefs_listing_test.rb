@@ -5,8 +5,10 @@ class ChefsListingTest < ActionDispatch::IntegrationTest
   def setup
     @chef = Chef.create!(chefname: "Deanna", email: "deanna@example.com",
                         password: "password", password_confirmation: "password")
-    @chef1 = Chef.create!(chefname: "Deanna1", email: "deanna1@example.com",
+    @chef1 = Chef.create!(chefname: "Max", email: "max@example.com",
                         password: "password", password_confirmation: "password")
+    @admin_user = Chef.create!(chefname: "John", email: "john@example.com",
+                                            password: "password", password_confirmation: "password", admin: true)
   end
 
   test "should show chefs index page" do
@@ -21,7 +23,8 @@ class ChefsListingTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", chef_path(@chef1), text: @chef1.chefname
   end
 
-  test "delete a chef" do
+  test "should delete a chef" do
+    sign_in_as(@admin_user, "password")
     get chefs_path
     assert_template 'chefs/index'
     assert_difference 'Chef.count', -1 do

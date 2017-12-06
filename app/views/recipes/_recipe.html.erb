@@ -9,9 +9,9 @@
     <div class="col-md-8 well">
       <h4 class="C-C1"><%= link_to recipe.name.titleize, recipe_path(recipe) %></h4>
       <p><%= truncate(recipe.description, length: 80) %></p>
-      <p><span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago</small></span></p>
+      <p><span class="quiet"><small>Created <%= time_ago_in_words(recipe.created_at) %> ago by </small><%= recipe.chef.chefname %></span></p>
 
-      <% if logged_in? && current_chef == recipe.chef %>
+      <% if logged_in? && (current_chef == recipe.chef || current_chef.admin?) %>
         <div class="recipe-actions pull-right">
           <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: "btn btn-xs btn-warning" %>
           <%= link_to "Delete this recipe", recipe_path(recipe), method: :delete,
